@@ -53,10 +53,6 @@ public class SwerveDriveSubsystem extends Subsystem {
 	 */
 
     public void init() {
-        initSteerMotor(RobotMap.swerveDriveSubsystemCANTalon2);
-        initSteerMotor(RobotMap.swerveDriveSubsystemCANTalon4);
-        initSteerMotor(RobotMap.swerveDriveSubsystemCANTalon6);
-        initSteerMotor(RobotMap.swerveDriveSubsystemCANTalon8);
 
         swerveEnclosure1 = new CanTalonSwerveEnclosure("enc 1", RobotMap.swerveDriveSubsystemCANTalon1, RobotMap.swerveDriveSubsystemCANTalon2, GEAR_RATIO);
         swerveEnclosure2 = new CanTalonSwerveEnclosure("enc 2", RobotMap.swerveDriveSubsystemCANTalon3, RobotMap.swerveDriveSubsystemCANTalon4, GEAR_RATIO);
@@ -67,48 +63,5 @@ public class SwerveDriveSubsystem extends Subsystem {
                     W, L);
     }
 
-.
-.
-.
-    private void initSteerMotor(CANTalon steerMotor) {
-        //Set the Control Mode to be PID based on position
-        steerMotor.changeControlMode(CANTalon.TalonControlMode.Position);
-
-        //Set initial setpoint
-        steerMotor.set(0);
-
-        //Set Feedback Device to be a quadrature encoder (4x Mode)
-        steerMotor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
-
-        //Motor Control Profile Slot Number:
-        steerMotor.setProfile(0);
-
-        //Configure the counts per revolution
-        steerMotor.configEncoderCodesPerRev(414);
-
-        //Set the Peak Output Voltage
-        steerMotor.configPeakOutputVoltage(+12f, -12f);
-
-        //Set the Min Output Voltage
-        steerMotor.configNominalOutputVoltage(+0f,-0f);
-
-        //Set the Tolerance
-        steerMotor.setAllowableClosedLoopErr(4);
-
-        //Setup the PID Values
-        steerMotor.setP(P);
-        steerMotor.setI(I);
-        steerMotor.setD(D);
-        steerMotor.setF(F);
-
-        //Reset the encoder position. This will be changed to be reset based on the absolute encoder in later builds.
-        steerMotor.setEncPosition(0);
-
-        //Reverse the output of the motor (or don't)
-        steerMotor.reverseOutput(REVERSE_OUTPUT);
-
-        //Reverse the output of the encoder (or don't)
-        steerMotor.reverseSensor(REVERSE_ENCODER);
-    }
 }
 ```
