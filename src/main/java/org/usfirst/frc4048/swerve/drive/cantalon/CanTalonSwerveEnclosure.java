@@ -12,7 +12,7 @@ public class CanTalonSwerveEnclosure extends BaseEnclosure implements SwerveEncl
     private CANTalon driveMotor;
     private CANTalon steerMotor;
 
-    private CanTalonEnclosureConfig config;
+    private boolean reverseEncoder = false;
 
     public CanTalonSwerveEnclosure(String name, CANTalon driveMotor, CANTalon steerMotor, double gearRatio) {
 
@@ -43,7 +43,8 @@ public class CanTalonSwerveEnclosure extends BaseEnclosure implements SwerveEncl
 
     @Override
     public int getEncPosition() {
-        return steerMotor.getEncPosition();
+        int reverse = reverseEncoder ? -1 : 1;
+        return reverse * steerMotor.getEncPosition();
     }
 
     @Override
@@ -59,5 +60,13 @@ public class CanTalonSwerveEnclosure extends BaseEnclosure implements SwerveEncl
 
     public CANTalon getSteerMotor() {
         return steerMotor;
+    }
+
+    public boolean isReverseEncoder() {
+        return reverseEncoder;
+    }
+
+    public void setReverseEncoder(boolean reverseEncoder) {
+        this.reverseEncoder = reverseEncoder;
     }
 }
