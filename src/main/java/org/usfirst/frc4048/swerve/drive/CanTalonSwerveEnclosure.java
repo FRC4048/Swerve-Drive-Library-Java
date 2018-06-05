@@ -4,7 +4,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import org.usfirst.frc4048.swerve.drive.BaseEnclousre;
+import org.usfirst.frc4048.swerve.drive.BaseEnclosure;
 import org.usfirst.frc4048.swerve.drive.SwerveEnclosure;
 
 /**
@@ -18,7 +18,7 @@ public class CanTalonSwerveEnclosure extends BaseEnclosure implements SwerveEncl
 	private boolean reverseEncoder = false;
 	private boolean reverseSteer = false;
 
-    public CanTalonSwerveEnclosure(String name, CANTalon driveMotor, CANTalon steerMotor, double gearRatio) {
+    public CanTalonSwerveEnclosure(String name, WPI_TalonSRX driveMotor, WPI_TalonSRX steerMotor, double gearRatio) {
 
         super(name, gearRatio);
 

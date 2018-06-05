@@ -9,7 +9,7 @@ package org.usfirst.frc4048.swerve.drive;
 public abstract class BaseEnclosure implements SwerveEnclosure {
 
     private String name;
-    private double gearRatio;
+    protected double gearRatio;
 
     public BaseEnclosure(String name, double gearRatio) {
         this.name = name;
