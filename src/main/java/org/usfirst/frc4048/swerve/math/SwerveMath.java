@@ -29,7 +29,6 @@ import java.util.List;
  */
 public class SwerveMath {
     // Robot dimensions. Units are of no importance. Required
-    // todo: rename
     private final double length;
     private final double width;
 
@@ -40,9 +39,11 @@ public class SwerveMath {
     private final double SCALE_SPEED = 1.00;
 
     // The "Centric" mode for the robot
-    private CentricMode centricMode = CentricMode.ROBOT;
+    	private CentricMode centricMode = CentricMode.ROBOT;
 
-
+    public void setModeField() {
+		centricMode= CentricMode.FIELD;
+	}
     /**
      * Constructor
      * @param width the robot width (units do not matter)

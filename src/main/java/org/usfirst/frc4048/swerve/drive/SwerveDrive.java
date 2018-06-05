@@ -74,5 +74,9 @@ public class SwerveDrive {
     public void setCentricMode(CentricMode centricMode) {
         this.swerveMath.setCentricMode(centricMode);
     }
+    
+    public void setModeField() {
+		this.swerveMath.setModeField();
+	}
 
 }

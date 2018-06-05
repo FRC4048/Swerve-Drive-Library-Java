@@ -21,26 +21,27 @@ public abstract class BaseEnclosure implements SwerveEnclosure {
      * @param speed: the speed to move the wheel, -1.0 being full backwards, 0 being stop +1.0 being full forward
      * @param angle: the angle to turn the wheel, 0 being forward, -1.0 being full turn counterclockwise, +1.0 being full turn clockwise
      */
-    @Override
-    public void move(double speed, double angle) {
-
-        int encPosition = getEncPosition();
-        angle = convertAngle(angle, encPosition);
-
-        if(shouldReverse(angle, encPosition)){
-            if(angle < 0) {
-                angle += 0.5;
-            } else {
-                angle -= 0.5;
-            }
-            speed *= -1.0;
-        }
-
-        setSpeed(speed);
-        // TODO: if speed != 0...
-        setAngle(angle);
-    }
-
+    public void move(double speed, double angle)
+	{
+		int encPosition = getEncPosition();
+		angle = convertAngle(angle, encPosition);
+		
+		if(shouldReverse(angle, encPosition))
+		{
+			if(angle < 0)
+				angle += 0.5;
+			else
+				angle -= 0.5;
+			
+			speed *= -1.0;
+		}
+		
+		setSpeed(speed);
+		
+		if(speed != 0.0) {
+			setAngle(angle); 
+		}
+	}
     public String getName() {
         return name;
     }
